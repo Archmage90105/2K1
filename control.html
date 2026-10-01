@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Пульт — ДА или НЕТ</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px; background: #0d1424; color: #fff; font: 16px Inter, "Segoe UI", Arial, sans-serif; }
+.wrap { max-width: 900px; margin: 0 auto; }
+.head { display: flex; justify-content: space-between; align-items: center; color: #8592ad; }
+.q { margin: 18px 0; padding: 20px; border-radius: 16px; background: rgba(255,255,255,.05); }
+.q h1 { margin: 6px 0 10px; font-size: 28px; }
+.q .a { color: #42d59b; font-weight: 700; }
+.row { display: grid; grid-template-columns: 32px 1fr 170px 90px 190px; gap: 12px; align-items: center;
+    padding: 10px 14px; margin-bottom: 8px; border-radius: 12px; background: rgba(255,255,255,.04); }
+.row.dead { opacity: .5; }
+.row .n { color: #8592ad; } .row .nm { font-weight: 700; font-size: 18px; }
+.lv { color: #4c8bff; letter-spacing: 3px; }
+button { height: 40px; padding: 0 16px; border-radius: 9px; border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06); color: #cfd6e6; font-weight: 700; font-size: 14px; cursor: pointer; }
+button:hover:not(:disabled) { background: rgba(255,255,255,.13); }
+button:disabled { opacity: .35; cursor: not-allowed; }
+.ans button, .adj button { margin-right: 6px; }
+.ans button.on.yes { background: #42d59b; color: #07130f; border-color: #42d59b; }
+.ans button.on.no { background: #ff5369; color: #24070b; border-color: #ff5369; }
+.bar { display: flex; gap: 10px; margin-top: 18px; align-items: center; }
+.bar .grow { flex: 1; color: #8592ad; }
+.primary { background: #fff; color: #111827; border-color: #fff; }
+.next { background: #4b82ff; color: #fff; border-color: #4b82ff; }
+.hint { margin-top: 24px; color: #5f6c86; font-size: 13px; line-height: 1.7; }
+kbd { padding: 1px 6px; border: 1px solid #3a4560; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <span id="qInfo"></span>
+    <span><span id="phase"></span> &nbsp;
+      <button id="openStage">Открыть экран</button>
+      <button id="openAdmin">Настройки</button>
+      <button id="newGame">Новая игра</button></span>
+  </div>
+  <div id="focusWarn" hidden style="margin-top:12px;padding:8px 14px;border-radius:9px;background:#5a2430;color:#ffd6dc">Окно пульта не в фокусе — кликните в него, иначе клавиши не сработают.</div>
+  <div class="q">
+    <span style="color:#8592ad">Вопрос (виден только вам)</span>
+    <h1 id="qText"></h1>
+    Правильный ответ: <span class="a" id="qAns"></span>
+  </div>
+  <div id="rows"></div>
+  <div class="bar">
+    <div class="grow" id="hint"></div>
+    <button id="resetBtn">Сбросить ответы</button>
+    <button id="showBtn" class="primary">Показать результат</button>
+    <button id="nextBtn" class="next"></button>
+  </div>
+  <div class="hint">
+    <kbd>1</kbd>–<kbd>9</kbd> ответ участника (нет → ДА → НЕТ → нет) &nbsp;
+    <kbd>Enter</kbd> показать результат &nbsp; <kbd>Space</kbd> дальше &nbsp; <kbd>R</kbd> сбросить<br>
+    Ответ можно менять до показа результата. «−1 / +1» правят жизни вручную; +1 у выбывшего возвращает его в игру.
+    Те же клавиши работают и в окне экрана. На экране зрителей: <kbd>F</kbd> — полный экран.
+  </div>
+</div>
+<script src="data/players.js"></script>
+<script src="data/questions.js"></script>
+<script src="shared.js"></script>
+<script src="control.js"></script>
+</body>
+</html>

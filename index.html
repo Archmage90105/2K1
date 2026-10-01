@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ДА или НЕТ</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="stage" id="stage">
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-mark">?</div>
+      <div class="brand-text"><span class="brand-small">КОНКУРС</span><span class="brand-name">2К1</span></div>
+    </div>
+    <div class="counter">ВОПРОС <b id="qNum">1</b>/ <span id="qTotal">1</span></div>
+  </header>
+  <section class="question">
+    <h1 id="questionText"></h1>
+    <div class="status" id="status"></div>
+  </section>
+  <section class="players" id="players"></section>
+
+  <div class="finish hidden" id="finish">
+    <div class="finish-icon">★</div>
+    <div class="finish-label">ИСПЫТАНИЕ ЗАВЕРШЕНО</div>
+    <h2>Отличная игра!</h2>
+    <div class="rating" id="rating"></div>
+  </div>
+</div>
+<script src="data/players.js"></script>
+<script src="data/questions.js"></script>
+<script src="shared.js"></script>
+<script src="display.js"></script>
+</body>
+</html>

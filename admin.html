@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Настройки — ДА или НЕТ</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px; background: #0d1424; color: #fff; font: 16px Inter, "Segoe UI", Arial, sans-serif; }
+.wrap { max-width: 860px; margin: 0 auto; }
+h2 { margin: 28px 0 10px; }
+.row { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; padding: 8px 12px; border-radius: 12px; background: rgba(255,255,255,.04); }
+.row input, .row select { height: 40px; padding: 0 12px; border-radius: 9px; border: 1px solid rgba(255,255,255,.14); background: #141c30; color: #fff; font-size: 16px; }
+.row input { flex: 1; }
+.n { width: 24px; color: #8592ad; }
+.th { position: relative; width: 52px; height: 52px; border-radius: 50%; overflow: hidden; background: #1c2a42; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; flex: none; }
+.th img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+button { height: 40px; padding: 0 16px; border-radius: 9px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06); color: #cfd6e6; font-weight: 700; cursor: pointer; }
+button:hover { background: rgba(255,255,255,.13); }
+.primary { background: #4b82ff; border-color: #4b82ff; color: #fff; }
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+#msg { margin-top: 14px; color: #42d59b; min-height: 22px; } #msg.err { color: #ff5369; }
+.note { color: #6f7c96; font-size: 14px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Настройки игры</h1>
+  <p class="note">Фото: нажмите на кружок и выберите файл (оно автоматически обрезается до квадрата). Изменения вступают в силу после «Сохранить» — игра при этом начнётся заново.</p>
+  <label>Жизней у каждого участника: <input type="number" id="lives" min="1" max="5" value="3" style="width:70px;height:40px;border-radius:9px;border:1px solid #333;background:#141c30;color:#fff;padding:0 8px"></label>
+
+  <h2>Участники</h2>
+  <div id="plist"></div>
+  <button data-act="addP">+ Добавить участника</button>
+
+  <h2>Вопросы</h2>
+  <div id="qlist"></div>
+  <button data-act="addQ">+ Добавить вопрос</button>
+
+  <div class="bar">
+    <button class="primary" id="save">Сохранить</button>
+    <button id="export">Скачать копию (JSON)</button>
+    <button id="import">Загрузить копию</button>
+    <button id="reset">Вернуть данные из файлов</button>
+  </div>
+  <div id="msg"></div>
+  <p class="note">Данные хранятся в этом браузере. Работайте в том же браузере, где открыты пульт и экран, и сделайте копию JSON на случай очистки данных браузера.</p>
+</div>
+<input type="file" id="file" accept="image/*" hidden>
+<input type="file" id="jsonFile" accept=".json" hidden>
+<script src="data/players.js"></script>
+<script src="data/questions.js"></script>
+<script src="shared.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

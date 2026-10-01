@@ -1,0 +1,16 @@
+# Фото участников (персональные данные) — не публикуем
+assets/players/*
+!assets/players/.gitkeep
+
+# Резервные копии настроек из admin.html
+quiz-config*.json
+
+# Система и редакторы
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
+
+# Прототип
+Proto/
